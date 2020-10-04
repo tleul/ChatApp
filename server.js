@@ -34,17 +34,21 @@ io.on('connection', (socket) => {
 		socket.broadcast.to(user.department).emit(
 			//Broad when a user connects
 			'message2',
-			formatMessage(username, `${user.username} Joined the chat`),
-		); //Listen for chatMessage
-		socket.on('chatMessage', (msg) => {
-			const user = getCurrentUser(socket.id);
-			io.to(user.room).emit(
-				'message2',
-				formatMessage(user.username, msg),
-			);
-		});
+			formatMessage(username, `Nile Bot Joined the chat`),
+		);
+		//Send user and room info
+		io.to(user.department).emit('roomUsers', {
+			department: user.department,
+			users: getRoomUsers(user.department),
+		}); //Listen for chatMessage
 	});
-
+	socket.on('chatMessage', (msg) => {
+		const user = getCurrentUser(socket.id);
+		io.to(user.department).emit(
+			'message2',
+			formatMessage(user.username, msg),
+		);
+	});
 	// Runs when client disconnects
 
 	socket.on('disconnect', () => {
@@ -54,6 +58,11 @@ io.on('connection', (socket) => {
 				'message2',
 				formatMessage('Nile Bot', `${user.username} has left the chat`),
 			);
+			//Send user and room info
+			io.to(user.department).emit('roomUsers', {
+				room: user.department,
+				users: getRoomUsers(user.department),
+			});
 		}
 	});
 });

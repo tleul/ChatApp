@@ -18,8 +18,8 @@ const userLeave = (id) => {
 };
 //get room users
 
-const getRoomUsers = (room) => {
-	return users.filter((user) => user.room === room);
+const getRoomUsers = (department) => {
+	return users.filter((user) => user.department === department);
 };
 module.exports = {
 	userJoin,
