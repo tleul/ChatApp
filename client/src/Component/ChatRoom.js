@@ -3,23 +3,16 @@ import React, { useState } from 'react';
 import io from 'socket.io-client';
 
 const socket = io('http://localhost:8000');
-const ChatRoom = () => {
-	let message = '';
-	socket.on('message2', (mess) => {
-		displayMessage(mess);
-	});
 
-	const displayMessage = (mesg) => {
-		console.log('heloo');
-		const div = document.createElement('div');
-		console.log(div);
-		div.classList.add('message');
-		div.innerHTML = `<p>${mesg}</p>`;
-		document.querySelector('.chat-text-messages').appendChild(div);
-	};
-	const onchangehandler = (e) => (message = e.target.value);
+const ChatRoom = () => {
+	const [sendmessage, setsendmessage] = useState('');
+
+	const onchangehandler = (e) => setsendmessage(e.target.value);
 	const sendhandler = () => {
-		socket.emit('chatMessage', message);
+		socket.emit('chatMessage', sendmessage);
+		setsendmessage('');
+		const textfield = document.querySelector('.chat-text');
+		textfield.focus();
 	};
 	return (
 		<>
@@ -55,6 +48,7 @@ const ChatRoom = () => {
 						<input
 							className='chat-text'
 							onChange={(e) => onchangehandler(e)}
+							value={sendmessage}
 							type='text'
 						/>
 						<input
@@ -68,5 +62,17 @@ const ChatRoom = () => {
 		</>
 	);
 };
-
+socket.on('message2', (mess) => {
+	displayMessage(mess);
+	const chatcontainer = document.querySelector('.chat-text-messages');
+	chatcontainer.scrollTop = chatcontainer.scrollHeight;
+});
+const displayMessage = (mesg) => {
+	console.log('heloo');
+	const div = document.createElement('div');
+	console.log(div);
+	div.classList.add('message');
+	div.innerHTML = `<p>${mesg}</p>`;
+	document.querySelector('.chat-text-messages').appendChild(div);
+};
 export default ChatRoom;
