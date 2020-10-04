@@ -7,14 +7,18 @@ function LoginChat() {
 			<form action='chatroom'>
 				<div className='chat-login'>
 					<div>
-						<input type='text' placeholder='User Name' />
+						<input
+							name='username'
+							type='text'
+							placeholder='User Name'
+						/>
 					</div>
 					<div>
-						<select name='Department' id=''>
+						<select name='department' id=''>
 							<option value='billing'>Billing</option>
-							<option value='billing'>Shipping</option>
-							<option value='billing'>Delivery</option>
-							<option value='billing'>Other</option>
+							<option value='shipping'>Shipping</option>
+							<option value='delivery'>Delivery</option>
+							<option value='other'>Other</option>
 						</select>
 					</div>
 					<div>
