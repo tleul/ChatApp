@@ -1,8 +1,12 @@
-import React from 'react';
+import React,   from 'react';
 
 import io from 'socket.io-client';
 const socket = io('http://localhost:8000');
-function ChatRoom() {
+const ChatRoom = () => {
+	socket.on('message', (message) => {
+		console.log(message);
+	});
+
 	return (
 		<>
 			<div className='nav-bar'>
@@ -34,6 +38,6 @@ function ChatRoom() {
 			</div>
 		</>
 	);
-}
+};
 
 export default ChatRoom;

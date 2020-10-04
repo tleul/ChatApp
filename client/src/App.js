@@ -1,11 +1,10 @@
 import React from 'react';
 
 import './App.css';
-import io from 'socket.io-client';
 import LoginChat from './Component/LoginChat';
 import ChatRoom from './Component/ChatRoom';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-const socket = io('http://localhost:8000');
+
 function App() {
 	return (
 		<Router>
