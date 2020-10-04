@@ -1,38 +1,95 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,700&display=swap');
+
+body {
+	font-family: 'Roboto Mono', monospace;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.container {
+	display: inline;
+	position: absolute;
+	justify-content: center;
+	position: absolute;
+	top: 20%;
+	left: 50%;
+	transform: translate(-50%, 0);
+	-webkit-transform: translate(-50%, 0);
+	-moz-transform: translate(-50%, 0);
+	-ms-transform: translate(-50%, 0);
+	-o-transform: translate(-50%, 0);
+	box-shadow: green 10px 10px 10px 10px;
+	width: 500px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.chat-box {
+	align-content: center;
+
+	text-align: center;
+	top: 50%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.chat-box input {
+	margin-bottom: 10px;
+	width: 50%;
+	height: 50px;
+	border: solid green 1px;
+	background: none;
+	outline: none;
+	font-size: larger;
 }
 
-.App-link {
-  color: #61dafb;
+.chat-box select {
+	margin-bottom: 10px;
+	width: 50%;
+	height: 50px;
+	border: solid green 1px;
+	outline: none;
+	font-size: larger;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* Chat Room  */
+.nav-bar li {
+	list-style: none;
+	padding-right: 100px;
+}
+
+.nav-bar h4 {
+	padding-top: 5px;
+}
+
+ul {
+	display: flex;
+	align-content: center;
+	justify-content: space-around;
+}
+
+ul button {
+	margin-top: 20px;
+	border: none;
+	background: lightsalmon;
+	height: 40px;
+	color: white;
+	font-size: larger;
+	border-radius: 20px;
+	-webkit-border-radius: 20px;
+	-moz-border-radius: 20px;
+	-ms-border-radius: 20px;
+	-o-border-radius: 20px;
+}
+
+.chat-board {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	padding: 10px;
+}
+
+.chat-board p {
+	text-align: center;
+}
+
+.chat-text-messages {
+	background: tomato;
+	width: 350px;
+	height: 400px;
+
 }
