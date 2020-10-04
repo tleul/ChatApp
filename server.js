@@ -10,16 +10,20 @@ const io = socketio(server);
 io.on('connection', (socket) => {
 	console.log('New WS Connection ....');
 	//Welcome Current user
-	socket.emit('message', 'Welcome to CHATCORD!');
+	socket.emit('message2', 'Welcome to CHATCORD!');
 
 	//Broad when a user connects
 
-	socket.broadcast.emit('message', 'A user Joined the chat');
+	socket.broadcast.emit('message2', 'A user Joined the chat');
 
+	//Listen for chatMessage
+	socket.on('chatMessage', (msg) => {
+		io.emit('message2', msg);
+	});
 	// Runs when client disconnects
 
 	socket.on('disconnect', () => {
-		io.emit('message', 'A user has left the chat');
+		io.emit('message2', 'A user has left the chat');
 	});
 });
 
