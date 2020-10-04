@@ -88,10 +88,18 @@ ul button {
 }
 
 .chat-text-messages {
+	display: flex;
+	flex-direction: column;
+	text-align: left;
 	background: tomato;
 	width: 350px;
-	height: 400px;
+	height: 350px;
+	overflow: auto;
 
+}
+
+.message p {
+	text-align: left;
 }
 
 .chat-text {
