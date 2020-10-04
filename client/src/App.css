@@ -1,7 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,700&display=swap');
 
 body {
-	font-family: 'Roboto Mono', monospace;
+	font-family: 'Lato', sans-serif;
+
 }
 
 .container {
@@ -69,12 +70,19 @@ ul button {
 	height: 40px;
 	color: white;
 	font-size: larger;
-	border-radius: 20px;
-	-webkit-border-radius: 20px;
-	-moz-border-radius: 20px;
-	-ms-border-radius: 20px;
-	-o-border-radius: 20px;
+	border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-moz-border-radius: 10px;
+	-ms-border-radius: 10px;
+	-o-border-radius: 10px;
+	outline: none;
 }
+
+ul button :hover {
+	color: black;
+
+}
+
 
 .chat-board {
 	display: flex;
@@ -91,16 +99,38 @@ ul button {
 	display: flex;
 	flex-direction: column;
 	text-align: left;
-	background: tomato;
+	background: lightgray;
 	width: 350px;
 	height: 350px;
 	overflow: auto;
 
 }
 
-.message p {
+.message .text {
+	color: black;
 	text-align: left;
+	overflow: hidden;
+	padding-left: 5px;
+	padding-right: 5px;
+	line-height: 1.4rem
 }
+
+.message {
+	background: lightskyblue;
+	margin: 10px 10px;
+	padding-left: 5px;
+	font-size: small;
+}
+
+.text-header {
+	display: flex;
+	justify-content: space-between;
+	color: white;
+	padding-right: 20px;
+	font-size: small;
+}
+
+
 
 .chat-text {
 	background: none;
@@ -110,5 +140,14 @@ ul button {
 	height: 30px;
 	margin-top: 15px;
 	margin-bottom: 15px;
+	outline: none;
 
+}
+
+.submit-button {
+	background: none;
+	border: solid green 2px;
+	width: 5rem;
+	height: 35px;
+	outline: none;
 }
