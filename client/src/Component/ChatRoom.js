@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import qs from 'qs';
 import io from 'socket.io-client';
 
 const socket = io('http://localhost:8000');
 
 const ChatRoom = () => {
+	useEffect(() => {
+		socket.on('roomUsers', ({ department, users }) => {
+			setinfo(department);
+			setusers(users);
+		});
+	}, []);
+	const [info, setinfo] = useState('');
+	const [users, setusers] = useState([]);
 	const [sendmessage, setsendmessage] = useState('');
 
 	const onchangehandler = (e) => setsendmessage(e.target.value);
 	const sendhandler = () => {
+		console.log(sendmessage);
 		socket.emit('chatMessage', sendmessage);
 		setsendmessage('');
 		const textfield = document.querySelector('.chat-text');
@@ -35,12 +44,14 @@ const ChatRoom = () => {
 						<p>Room Name:</p>
 					</section>
 					<section>
-						<p>name room</p>
+						<p>{info}</p>
 					</section>
 					<section>
 						<p>Users:</p>
 						<section>
-							<p>users name</p>
+							{users.map((user) => (
+								<p>{user.username}</p>
+							))}
 						</section>
 					</section>
 				</div>
@@ -83,9 +94,8 @@ socket.on('message2', (mess) => {
 	chatcontainer.scrollTop = chatcontainer.scrollHeight;
 });
 const displayMessage = (mesg) => {
-	console.log('heloo');
 	const div = document.createElement('div');
-	console.log(div);
+
 	div.classList.add('message');
 	div.innerHTML = `<p class=text-header>${mesg.username}<span>${mesg.time}</span> </p>  <p class='text'>${mesg.text}</p>`;
 	document.querySelector('.chat-text-messages').appendChild(div);
