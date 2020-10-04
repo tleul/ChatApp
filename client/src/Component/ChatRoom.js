@@ -1,12 +1,26 @@
-import React,   from 'react';
+import React, { useState } from 'react';
 
 import io from 'socket.io-client';
+
 const socket = io('http://localhost:8000');
 const ChatRoom = () => {
-	socket.on('message', (message) => {
-		console.log(message);
+	let message = '';
+	socket.on('message2', (mess) => {
+		displayMessage(mess);
 	});
 
+	const displayMessage = (mesg) => {
+		console.log('heloo');
+		const div = document.createElement('div');
+		console.log(div);
+		div.classList.add('message');
+		div.innerHTML = `<p>${mesg}</p>`;
+		document.querySelector('.chat-text-messages').appendChild(div);
+	};
+	const onchangehandler = (e) => (message = e.target.value);
+	const sendhandler = () => {
+		socket.emit('chatMessage', message);
+	};
 	return (
 		<>
 			<div className='nav-bar'>
@@ -34,7 +48,22 @@ const ChatRoom = () => {
 						</section>
 					</section>
 				</div>
-				<div className='chat-text-messages'></div>
+				<div className='chat-board-group'>
+					<div className='chat-text-messages'></div>
+
+					<div>
+						<input
+							className='chat-text'
+							onChange={(e) => onchangehandler(e)}
+							type='text'
+						/>
+						<input
+							onClick={sendhandler}
+							value='send'
+							type='submit'
+						/>
+					</div>
+				</div>
 			</div>
 		</>
 	);
