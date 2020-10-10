@@ -2,9 +2,11 @@
 
 body {
 	font-family: 'Lato', sans-serif;
-
 }
-
+a {
+	text-decoration: none;
+	color: gray;
+}
 .container {
 	display: inline;
 	position: absolute;
@@ -80,9 +82,7 @@ ul button {
 
 ul button :hover {
 	color: black;
-
 }
-
 
 .chat-board {
 	display: flex;
@@ -103,7 +103,6 @@ ul button :hover {
 	width: 350px;
 	height: 350px;
 	overflow: auto;
-
 }
 
 .message .text {
@@ -112,7 +111,7 @@ ul button :hover {
 	overflow: hidden;
 	padding-left: 5px;
 	padding-right: 5px;
-	line-height: 1.4rem
+	line-height: 1.4rem;
 }
 
 .message {
@@ -130,8 +129,6 @@ ul button :hover {
 	font-size: small;
 }
 
-
-
 .chat-text {
 	background: none;
 	border: solid green 1px;
@@ -141,7 +138,6 @@ ul button :hover {
 	margin-top: 15px;
 	margin-bottom: 15px;
 	outline: none;
-
 }
 
 .submit-button {
