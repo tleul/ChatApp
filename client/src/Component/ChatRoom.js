@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import qs from 'qs';
 import io from 'socket.io-client';
-
-const socket = io('http://localhost:8000');
+import { Link } from 'react-router-dom';
+const socket = io('http://10.0.0.102:8000');
 
 const ChatRoom = () => {
 	useEffect(() => {
@@ -33,7 +33,9 @@ const ChatRoom = () => {
 					</li>
 					<li>
 						<button>
-							<span>Leave Room</span>
+							<Link to='/'>
+								<span>Leave Room</span>
+							</Link>
 						</button>
 					</li>
 				</ul>
@@ -48,11 +50,13 @@ const ChatRoom = () => {
 					</section>
 					<section>
 						<p>Users:</p>
-						<section>
-							{users.map((user) => (
-								<p>{user.username}</p>
-							))}
-						</section>
+
+					</section>
+					<section>
+						{users.map((user) => (
+							<p>{user.username}</p>
+						))}
+
 					</section>
 				</div>
 				<div className='chat-board-group'>
