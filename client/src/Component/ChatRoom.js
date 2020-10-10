@@ -50,11 +50,13 @@ const ChatRoom = () => {
 					</section>
 					<section>
 						<p>Users:</p>
+
 					</section>
 					<section>
 						{users.map((user) => (
 							<p>{user.username}</p>
 						))}
+
 					</section>
 				</div>
 				<div className='chat-board-group'>
