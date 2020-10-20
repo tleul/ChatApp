@@ -10,7 +10,7 @@ function App() {
 		<Router>
 			<div className='container'>
 				<Route exact path='/' component={LoginChat} />
-				<Suspense fallback={<div>Loadin ...</div>}>
+				<Suspense fallback={<div>Loading ...</div>}>
 					<Switch>
 						<Route exact path='/chatroom' component={ChatRoom} />
 					</Switch>
